@@ -56,7 +56,7 @@ def principal():
     palabra_1 = str(input('Ingrese una palabra: '))
     palabra_2 = str(input('Ingrese otra palabra: '))
     resultado = palabras_similares(palabra_1, palabra_2)
-    print(resultado)
+    print(f'Tiene una superposición de {resultado} elementos.')
 
 if __name__ == "__main__":
     principal()
