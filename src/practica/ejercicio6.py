@@ -106,7 +106,7 @@ def principal():
     posicionamiento = int(input('Ingrese el valor de desplazamiento: '))
     resultado_a = codificacion(palabra_o_numero, posicionamiento)
     resultado_b = decodificacion(palabra_o_numero, posicionamiento)
-    print(resultado_a, resultado_b)
+    print(f'La palabra "{palabra_o_numero}" codificada hacia delante es "{resultado_a}" y hacia atras es "{resultado_b}".')
 
 
 if __name__ == "__main__":
