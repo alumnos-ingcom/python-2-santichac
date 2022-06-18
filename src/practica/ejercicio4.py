@@ -14,6 +14,10 @@ def fibonacci(numero):
     """
     Esta función toma un número y devuelve el número
     que haya ingresado en la sucesión de fibonacci.
+    Pre: numero es un número entero postivo que es el
+    n-esimo número de la sucesión de fibonacci.
+    Post: la función devuelve el número que haya introducido el usuario
+    en la sucesión de fibonacci.
     """
     numero_a = 0
     numero_b = 1
