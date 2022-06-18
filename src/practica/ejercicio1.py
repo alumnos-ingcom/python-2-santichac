@@ -13,6 +13,9 @@ def es_par(nro):
     Esta función es para saber si un número es par o impar.
     Si el número ingresado que es nro es par el programa
     devuelve True, en el caso de que sea impar devolversa False.
+    Pre: nro es un número entero, positivo o negativo y par o impar.
+    Post: La función tendra que devolver True si el número es par
+    y False si es impar.
     """
     numero = nro // 2
     resultado = numero + numero
