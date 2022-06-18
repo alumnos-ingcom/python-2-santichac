@@ -13,77 +13,100 @@ unicamente caracteres del tipo AZaz y 0 a 9, de manera que al
 codificar las ultimas letras del abecedario se vuelva a las primeras letras.
 """
 
-def codificar(texto, posiciones):
+def codificacion(palabra_o_numero, posicionamiento):
+    """
+    Esta función codifica hacia delante cada caracter de acuerdo al número que quiera
+    desplazarlo el usuario. ejemplo: abc, si se desplaza una vez,va a ser bcd
+    Pre: palabra_o_numero es una o varias palabras en mayuscula o minuscula, números o una conbinación.
+    posicionamiento es el valor de dezplazamiento para la encriptación de la palabra.
+    Post: esta función devolvera la codificación de la palabra, las palabras, los números o
+    de la combinación de ambos, según lo que quiera desplazarlo el usuario. Esto depende
+    de que número introduzca el usuario.
+    """
     conversion = 0
-    codificado = ""
-    diferencia = 0
-    for c in texto:
-        conversion = ord(c)
+    codificacion = ""
+    dif = 0
+    for n in palabra_o_numero:
+        conversion = ord(n)
         if conversion >= 48 and conversion <= 57:
-            while posiciones > 10:
-                posiciones -= 10
-            conversion += posiciones
+            while posicionamiento > 10:
+                posicionamiento -= 10
+            conversion += posicionamiento
             if conversion > 57:
-                diferencia = conversion - 57
+                dif = conversion - 57
                 conversion = 48
-                conversion += diferencia - 1
+                conversion += dif - 1
         elif conversion >= 97 and conversion <= 122:
-            while posiciones > 26:
-                posiciones -= 26
-            conversion += posiciones
+            while posicionamiento > 26:
+                posicionamiento -= 26
+            conversion += posicionamiento
             if conversion > 122:
-                diferencia = conversion - 122
+                dif = conversion - 122
                 conversion = 97
-                conversion += diferencia - 1
+                conversion += dif - 1
         elif conversion >= 65 and conversion <= 90:
-            while posiciones > 26:
-                posiciones -= 26
-            conversion += posiciones
+            while posicionamiento > 26:
+                posicionamiento -= 26
+            conversion += posicionamiento
             if conversion > 90 and conversion <= 122:
-                diferencia = conversion  - 90
+                dif = conversion  - 90
                 conversion = 65
-                conversion += diferencia - 1
-        codificado += chr(conversion)
-    return codificado
+                conversion += dif - 1
+        codificacion += chr(conversion)
+    return codificacion
 
-def decodificar(texto, posiciones):
+def decodificacion(palabra_o_numero, posicionamiento):
+    """
+    Esta función decodifica hacia atras cada caracter de acuerdo al número que quiera
+    desplazarlo el usuario. Ejemplo: abc, si se deplaza una vez, va a ser zab.
+    Pre: palabra_o_numero es una o varias palabras en mayuscula o minuscula, números o una conbinación.
+    posicionamiento es el valor de dezplazamiento para la encriptación de la palabra.
+    Post: esta función devolvera la codificación de la palabra, las palabras, los números o
+    de la combinación de ambos, hacia atras y la cantidad de el valor de desplazamiento de lo que
+    haya introducido el usuario.
+    """
     conversion = 0
-    decodificado = ""
-    for c in texto:
-        conversion = ord(c)
+    decodificacion = ""
+    for n in palabra_o_numero:
+        conversion = ord(n)
         if conversion >= 48 and conversion <= 57:
-            while posiciones > 10:
-                posiciones -= 10
-            conversion -= posiciones
+            while posicionamiento > 10:
+                posicionamiento -= 10
+            conversion -= posicionamiento
             if conversion < 48:
-                diferencia = 48 - conversion
+                dif = 48 - conversion
                 conversion = 57
-                conversion -= diferencia - 1
+                conversion -= dif - 1
         elif conversion >= 97 and conversion <= 122:
-            while posiciones > 26:
-                posiciones -= 26
-            conversion -= posiciones
+            while posicionamiento > 26:
+                posicionamiento -= 26
+            conversion -= posicionamiento
             if conversion < 97:
-                diferencia = 97 - conversion
+                dif = 97 - conversion
                 conversion = 122
-                conversion -= diferencia - 1
+                conversion -= dif - 1
         elif conversion >= 65 and conversion <= 90:
-            while posiciones > 26:
-                posiciones -= 26
-            conversion -= posiciones
+            while posicionamiento > 26:
+                posicionamiento -= 26
+            conversion -= posicionamiento
             if conversion < 65:
-                diferencia = 65 - conversion
+                dif = 65 - conversion
                 conversion = 90
-                conversion -= diferencia - 1
-        decodificado += chr(conversion)
-    return decodificado
+                conversion -= dif - 1
+        decodificacion += chr(conversion)
+    return decodificacion
 
 def principal():
     """
     Esta función es la que se encarga de la parte 'interactiva' del ejercicio
     (La entrada, la llamada al algoritmo y la salida)
     """
-    pass
+    
+    palabra_o_numero = str(input('Ingrese una palabra: '))
+    posicionamiento = int(input('Ingrese el valor de desplazamiento: '))
+    resultado_a = codificacion(palabra_o_numero, posicionamiento)
+    resultado_b = decodificacion(palabra_o_numero, posicionamiento)
+    print(resultado_a, resultado_b)
 
 
 if __name__ == "__main__":
