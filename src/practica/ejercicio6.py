@@ -24,7 +24,7 @@ def codificacion(palabra_o_numero, posicionamiento):
     de que número introduzca el usuario.
     """
     conversion = 0
-    codificacion = ""
+    codificacion = ''
     dif = 0
     for n in palabra_o_numero:
         conversion = ord(n)
@@ -55,19 +55,19 @@ def codificacion(palabra_o_numero, posicionamiento):
         codificacion += chr(conversion)
     return codificacion
 
-def decodificacion(palabra_o_numero, posicionamiento):
+def decodificacion(palabra_o_numero_b, posicionamiento):
     """
-    Esta función decodifica hacia atras cada caracter de acuerdo al número que quiera
-    desplazarlo el usuario. Ejemplo: abc, si se deplaza una vez, va a ser zab.
-    Pre: palabra_o_numero es una o varias palabras en mayuscula o minuscula, números o una conbinación.
+    Esta función decodifica la palabra que se haya codificado anteriormente. 
+    Ejemplo: abc, codificada en 1 es bcd y decodificada es abc
+    Pre: palabra_o_numero es una o varias palabras en mayuscula o minuscula, números o una combinación.
     posicionamiento es el valor de dezplazamiento para la encriptación de la palabra.
     Post: esta función devolvera la codificación de la palabra, las palabras, los números o
     de la combinación de ambos, hacia atras y la cantidad de el valor de desplazamiento de lo que
     haya introducido el usuario.
     """
     conversion = 0
-    decodificacion = ""
-    for n in palabra_o_numero:
+    decodificacion = ''
+    for n in palabra_o_numero_b:
         conversion = ord(n)
         if conversion >= 48 and conversion <= 57:
             while posicionamiento > 10:
@@ -105,8 +105,9 @@ def principal():
     palabra_o_numero = str(input('Ingrese una palabra: '))
     posicionamiento = int(input('Ingrese el valor de desplazamiento: '))
     resultado_a = codificacion(palabra_o_numero, posicionamiento)
-    resultado_b = decodificacion(palabra_o_numero, posicionamiento)
-    print(f'La palabra "{palabra_o_numero}" codificada hacia delante es "{resultado_a}" y hacia atras es "{resultado_b}".')
+    palabra_o_numero_b = resultado_a
+    resultado_b = decodificacion(palabra_o_numero_b, posicionamiento)
+    print(f'La palabra "{palabra_o_numero}" codificada es "{resultado_a}" y la decodificación de "{resultado_a}" es "{resultado_b}".')
 
 
 if __name__ == "__main__":
