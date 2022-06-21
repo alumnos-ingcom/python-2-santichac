@@ -26,8 +26,8 @@ def codificacion(palabra_o_numero, posicionamiento):
     conversion = 0
     codificacion = ''
     dif = 0
-    for n in palabra_o_numero:
-        conversion = ord(n)
+    for i in palabra_o_numero:
+        conversion = ord(i)
         if conversion >= 48 and conversion <= 57:
             while posicionamiento > 10:
                 posicionamiento -= 10
@@ -61,14 +61,13 @@ def decodificacion(palabra_o_numero_b, posicionamiento):
     Ejemplo: abc, codificada en 1 es bcd y decodificada es abc
     Pre: palabra_o_numero es una o varias palabras en mayuscula o minuscula, números o una combinación.
     posicionamiento es el valor de dezplazamiento para la encriptación de la palabra.
-    Post: esta función devolvera la codificación de la palabra, las palabras, los números o
-    de la combinación de ambos, hacia atras y la cantidad de el valor de desplazamiento de lo que
-    haya introducido el usuario.
+    Post: esta función devolvera la decodificación de la palabra, las palabras, los números o
+    de la combinación de ambos, que se haya codificado anteriormente.
     """
     conversion = 0
     decodificacion = ''
-    for n in palabra_o_numero_b:
-        conversion = ord(n)
+    for i in palabra_o_numero_b:
+        conversion = ord(i)
         if conversion >= 48 and conversion <= 57:
             while posicionamiento > 10:
                 posicionamiento -= 10
