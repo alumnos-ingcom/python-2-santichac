@@ -10,37 +10,67 @@ está balanceada.
 Es decir, si cada corchete que abre, tiene su par que cierra. 
 El resultado debe ser un valor lógico indicando si esta o no balanceado.
 """
-def corchetes(palabra):
+def primera(palabra):
     """
+    Esta función toma el valor 0 de la lista y chequea que no sea ],
+    en el caso de que sea ] devolvera False.
+    Pre: palabra es una serie de corchetes introducida por el usuario.
+    Post: la función devolvera True si empieza con [ y False si empieza con ].
+    """
+    problemas = 0
+    lista =[ ]
+    lista = palabra.split()
+    if lista[0] == ']':
+        problemas = False
+    else:
+        problemas = True
+    return problemas
+
+def corchetes_abre(palabra):
+    """
+    Esta función toma valores de la cadena de corchetes que introdujo el usuario
+    y analiza si esta balanceado o no.
+    Pre: palabra es una serie de corchetes introducido por el usuario.
+    Post: la función devuelve el valor de la cantidad de [ que haya.
+    """
+    contador = 0
+    validacion = 0
+    for corchete_A in palabra:
+        if(corchete_A == '['):
+            contador += 1
+            validacion += 1
+    return validacion
+
+def corchetes_cierre(palabra):
+    """
+    Esta función toma valores de la cadena de corchetes que introdujo el usuario
+    y analiza si esta balanceado o no.
+    Pre: palabra es una serie de corchetes introducido por el usuario.
+    Post: la función devuelve el valor de la cantidad de ] que haya.
     """
     cantidad = 0
-    corchetes_a = 0
-    while corchetes_a<len(palabra):
-        if palabra[corchetes_a] == '[':
+    validar = 0
+    for corchete_B in palabra:
+        if(corchete_B == ']'):
             cantidad += 1
-    corchetes_a += 1
+            validar += 1
+    return validar
 
-    if cantidad > 0:
-        print('tiene')
+def balanceado(validacion, validar):
+    """
+    Esta función toma los valores de las funciones anteriores y
+    devuelve True si esta balanceado y False si no lo esta.
+    Pre: validacion es el resultado de la función corchete_abre()
+    validar es el resultado de la función corchetes_cierre()
+    Post: si esta balanceado devolvera True y si no lo esta
+    devolvera False.
+    """
+    balance = True
+    if validacion == validar:
+        balance = True
     else:
-        print('notiene')
-
-
-def corchetes_dos(palabra):
-    contador = 0
-    corchetes_b = 0
-    while corchetes_b<len(palabra):
-        if palabra[corchetes_b] == ']':
-            contador += 1
-    corchetes_b += 1
-    
-    if contador > 0:
-        print('tiene')
-    else:
-        print('notiene')
-
-
-    
+        balance = False
+    return balance
 
 def principal():
     """
@@ -48,10 +78,12 @@ def principal():
     (La entrada, la llamada al algoritmo y la salida)
     """
     palabra = str(input('Ingrese una cadena de caracteres con corchetes: '))
-    resultado = corchetes(palabra)
-    nashe = corchetes_dos(palabra) 
-    print(resultado, nashe)
-
+    abre = corchetes_abre(palabra)
+    cierre = corchetes_cierre(palabra) 
+    cualquiera = primera(palabra)
+    resultado = balanceado(abre, cierre)
+    print(resultado)
+    print(cualquiera)
 
 if __name__ == "__main__":
     principal()
