@@ -15,6 +15,8 @@ def maximo_minimo_promedio(lista):
     """
     Esta función recibe la cantidad de números que el usuario decida
     y obtiene el número mas grande, el mas chico y el promedio de todos los números.
+    Pre: lista es una lista de números enteros, positivos o negativos.
+    Post: la función devuelve una tupla con el maximo de todos, el minimo y el promedio entre todos.
     """
     maximo = lista[0]
     minimo = lista[0]
